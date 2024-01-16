@@ -1,5 +1,5 @@
 # Robust Parameter Design Based on Time-Consuming Multi-fidelity Simulations with Autoregressive Shifted Log Loss Gaussian Process Model
-This repository contains the source code for the Structural and Multidisciplinary Optimization paper “Robust Parameter Design Based on Time-Consuming Multi-fidelity Simulations with Autoregressive Shifted Log Loss Gaussian Process Model.”
+This repository contains the source code for the paper “Robust Parameter Design Based on Time-Consuming Multi-fidelity Simulations with Autoregressive Shifted Log Loss Gaussian Process Model.”
 
 Robust parameter design is a quality improvement method to mitigate the effect of input noise by minimizing the expected quality loss (EQL). To reduce simulation time in RPD based on bi-fidelity simulations, the autoregressive shifted log loss Gaussian process (ASLLGP) model is proposed to estimate the high-fidelity (HF) EQL using HF and low-fidelity (LF) simulation data. The excellent performance of the proposed model is illustrated with two examples. Descriptions on how to run the code of two examples are presented as follows. 
 
