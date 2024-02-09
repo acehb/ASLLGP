@@ -74,7 +74,7 @@ The `Piezo True EQL on grid points.mat` file gives the true EQL at the points in
 
 `PiezoTrueEQL.m`: Function for computing the true EQL for Example 2.
 
-`PiezoTrueEQLonGridPoints.m`: Script used to compute the true EQL on the points in the grid $`{\{0,0.005,…,1}\}^2`$. for Example 2 (used to compute the data stored in `Piezo True EQL on grid points.mat`).
+`PiezoTrueEQLonGridPoints.m`: Script used to compute the true EQL on the points in the grid $`{\{0,0.005,…,1}\}^2`$ for Example 2 (used to compute the data stored in `Piezo True EQL on grid points.mat`).
 
 `ShaftDesignpoints.m`: Generates 200 designs and outputs at the design points for Example 1 (the results from one execution of this script are stored in `Designs for the shaft example.mat`, and the data in this .mat file are used to obtain the results presented in Example 1).
 
