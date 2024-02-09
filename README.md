@@ -6,7 +6,9 @@ Robust parameter design is a quality improvement method to mitigate the effect o
 
 **Requirements: Matlab R2020a, Global Optimization Toolbox, Parallel Computing Toolbox.**
 
-Please open and run the `ShaftCompare3methods.m` file to get five performance measures in predicting EQL obtained with the ASLLGP, ALL, and AGPL models for the shaft example as in Table 2. The code also compares the three multi-fidelity models and the corresponding single-fidelity models by predicting the EQL as shown in Table 3.
+**Instruction for reproducing the results in Example 1:**
+
+Please open and run the `ShaftCompare3methods.m` script to get the summaries of the five EQL prediction performance measures for the ASLLGP, ALL, and AGPL models as given in Table 2. The code also gives the results in Table 3.
 
 The `ShaftGridOptimizationEQL.m` file gives the plots of the posterior mean (point predictor), and lower and upper 95% credible limits for the EQL given by the ASLLGP, ALL and AGPL models versus the control factor x_c, as shown in Figure 3.
 
