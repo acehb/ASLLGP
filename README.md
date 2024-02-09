@@ -10,7 +10,7 @@ Robust parameter design is a quality improvement method to mitigate the effect o
 
 Please open and run the `ShaftCompare3methods.m` script to get the summaries of the five EQL prediction performance measures for the ASLLGP, ALL, and AGPL models as given in Table 2. The code also gives the results in Table 3.
 
-The `ShaftGridOptimizationEQL.m` file gives the plots of the posterior mean (point predictor), and lower and upper 95% credible limits for the EQL given by the ASLLGP, ALL and AGPL models versus the control factor x_c, as shown in Figure 3.
+Run the `ShaftGridOptimizationEQL.m` script to construct Figure 3, i.e., which is a plot of the posterior mean, and lower and upper 95% credible limits for the EQL given by the ASLLGP, ALL and AGPL models fitted with data from one nested design versus x_c.
 
 The `PiezoCompare3methods.m` file gets five performance measures in predicting EQL obtained with the ASLLGP, ALL, and AGPL models for the piezoelectric actuator example as in Table 5. The code also compares the mean and standard error of the true EQL at the estimated optimal control-factor setting given by each of the ASLLGP, ALL and AGPL models as shown in Table 6.
 
