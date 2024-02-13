@@ -76,7 +76,7 @@ clabel(casll1,hasll1,'FontSize',labs,'FontWeight','normal');hasll1.LabelSpacing=
 leg1=legend([h1 h2],['True',sprintf('\n'),'EQL{\times}10^{5}'],[' ',sprintf('\n'),'Posterior',sprintf('\n'),'mean of',sprintf('\n'), 'the EQL',sprintf('\n'), 'given by',sprintf('\n'), 'the ASLLGP',sprintf('\n'), 'model{\times}10^{5}']);
 set(leg1,'FontSize',fleg,'FontWeight','bold');
 xlim([0,1]);xticks([0:0.2:1]);ca1 = get(gca,'XTickLabel');set(gca,'XTickLabel',ca1,'fontsize',ftick,'fontweight','normal');
-yticks([0:0.1:1]);cay1 = get(gca,'YTickLabel');set(gca,'YTickLabel',cay1,'fontsize',ftick,'fontweight','normal');
+yticks([0:0.2:1]);cay1 = get(gca,'YTickLabel');set(gca,'YTickLabel',cay1,'fontsize',ftick,'fontweight','normal');
 subplot(1,3,2);subplot('position',[fx+wdx+wx*1,fy,wx,wy]);
 [call1,hall1]=contour(xc1,xc2,qgrid*1e5,range1,'--r','ShowText','on');hold on;
 h3 = plot(NaN, '-.r','LineWidth',lw);
@@ -88,7 +88,7 @@ clabel(call1,hall1,'FontSize',labs,'FontWeight','normal');clabel(call2,hall2,'Fo
 xlabel('Control factor x_1','FontSize',labs,'FontWeight','normal');ylabel('Control factor x_2','FontSize',labs,'FontWeight','normal');
 hall1.LabelSpacing=ls3;hall2.LabelSpacing=ls2;
 xlim([0,1]);xticks([0:0.2:1]);ca2 = get(gca,'XTickLabel');set(gca,'XTickLabel',ca2,'fontsize',ftick,'fontweight','normal');
-yticks([0:0.1:1]);cay2 = get(gca,'YTickLabel');set(gca,'YTickLabel',cay2,'fontsize',ftick,'fontweight','normal');
+yticks([0:0.2:1]);cay2 = get(gca,'YTickLabel');set(gca,'YTickLabel',cay2,'fontsize',ftick,'fontweight','normal');
 subplot(1,3,3);subplot('position',[fx+wdx*2+wx*2+0.01, fy,wx-0.01,wy]);
 [cagpl1,hagpl1]=contour(xc1,xc2,qgrid*1e5,rangeGPL,'--r','ShowText','on');hold on;
 h5 = plot(NaN, '-.r','LineWidth',lw);
@@ -100,4 +100,4 @@ clabel(cagpl1,hagpl1,'FontSize',labs,'FontWeight','normal');clabel(cagpl2,hagpl2
 xlabel('Control factor x_1','FontSize',labs,'FontWeight','normal');ylabel('Control factor x_2','FontSize',labs,'FontWeight','normal');
 hagpl1.LabelSpacing=ls1;hagpl2.LabelSpacing=ls2;
 xlim([0,1]);xticks([0:0.2:1]);ca3 = get(gca,'XTickLabel');set(gca,'XTickLabel',ca3,'fontsize',ftick,'fontweight','normal');
-yticks([0:0.1:1]);cay3= get(gca,'YTickLabel');set(gca,'YTickLabel',cay3,'fontsize',ftick,'fontweight','normal');
+yticks([0:0.2:1]);cay3= get(gca,'YTickLabel');set(gca,'YTickLabel',cay3,'fontsize',ftick,'fontweight','normal');
