@@ -68,7 +68,7 @@ The `Piezo True EQL on grid points.mat` file gives the true EQL at all $`\mathbf
 
 `NestedLHD.m`: Function for generating maximin nested Latin hypercube designs.
 
-`PiezoDesignPoints.m`: Generates 100 maximin nested Latin hypercube designs and computes the outputs at the design points for Example 2 (the results from one execution of this script are stored in the `Designs for the piezoelectric actuator example.mat` file, and the data in this .mat file is used to obtain the results presented in Example 2)
+`PiezoDesignPoints.m`: Generates 100 maximin nested Latin hypercube designs and computes the outputs at the design points for Example 2 (the results from one execution of this script are stored in the `Designs for the piezoelectric actuator example.mat` file, and the data in this .mat file are used to obtain the results presented in Example 2)
 
 `PiezoelectricActuator.m`: Function that contains the HF (fidelity=2) and LF (fidelity=1) simulators for Example 2.
 
@@ -78,7 +78,7 @@ The `Piezo True EQL on grid points.mat` file gives the true EQL at all $`\mathbf
 
 `PiezoTrueEQLonGridPoints.m`: Script used to compute the true EQL at all the $`\mathbf{x}_c\in{\{0,0.005,…,1}\}^2`$ for Example 2 (used to compute the data stored in `Piezo True EQL on grid points.mat` file).
 
-`ShaftDesignpoints.m`: Generates 100 maximin nested Latin hypercube designs, 100 maximin Latin hypercube designs, and the corresponding outputs at all design points for Example 1 (the results from one execution of this script are stored in the `Designs for the shaft example.mat` file, and the data in this .mat file is used to obtain the results presented in Example 1).
+`ShaftDesignpoints.m`: Generates 100 maximin nested Latin hypercube designs, 100 maximin Latin hypercube designs, and the corresponding outputs at all design points for Example 1 (the results from one execution of this script are stored in the `Designs for the shaft example.mat` file, and the data in this .mat file are used to obtain the results presented in Example 1).
 
 `ShaftInterp.m`:  Interpolators for the mass of the small shaft output (which is the same for both HF and LF simulators) and the HF (fidelity=2) and LF (fidelity=1) maximum von Mises stress outputs on the grid $`{\{0,0.1,…,1}\}^2`$ of $`(x_c,x_e)`$ values for Example 1.
 
