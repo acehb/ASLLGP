@@ -34,9 +34,9 @@ The `200 test points for the shaft example.mat` file  gives the 200 test points 
 
 The `Designs for the piezoelectric actuator example.mat` file gives the 100 maximin nested Latin hypercube designs for fitting the ASLLGP, ALL, and AGPL models, and the corresponding outputs at all design points.
 
-The `400 test points for the piezoelectric actuator example.mat` gives the 400 test points from a Latin hypercube design for Example 2, and the true EQL at those points.
+The `400 test points for the piezoelectric actuator example.mat` file gives the 400 test points from a Latin hypercube design for Example 2, and the true EQL at those points.
 
-The `Piezo True EQL on grid points.mat` file gives the true EQL at all the $`\mathbf{x}_c\in{\{0,0.005,…,1}\}^2`$.
+The `Piezo True EQL on grid points.mat` file gives the true EQL at all $`\mathbf{x}_c\in{\{0,0.005,…,1}\}^2`$.
 
 **MATLAB scripts other than the four main .m files mentioned in the instructions above**
 
