@@ -1,4 +1,4 @@
-% compute the true EQL at all x_c in {0,0.005,¡­,1}^2 for Example 2 
+% compute the true EQL at all x_c in {0,0.005,...­,1}^2 for Example 2 
 clear
 [ri_noise,ci_noise]=lgwt(6,0,1);
 w_noise=zeros(1,length(ri_noise)*length(ri_noise));
