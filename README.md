@@ -1,6 +1,6 @@
-# Robust Parameter Design Based on Time-Consuming Bi-fidelity Simulations with Autoregressive Shifted Log Loss Gaussian Process Model
+# Robust Parameter Design Based on Time-Consuming Bi-fidelity Simulations With Autoregressive Shifted Log Loss Gaussian Process Model
 
-This repository contains the MATLAB codes for the paper titled “Robust Parameter Design Based on Time-Consuming Bi-fidelity Simulations with Autoregressive Shifted Log Loss Gaussian Process Model.”
+This repository contains the MATLAB codes for the paper titled “Robust Parameter Design Based on Time-Consuming Bi-fidelity Simulations With Autoregressive Shifted Log Loss Gaussian Process Model.”
 
 Robust parameter design is a quality improvement method to mitigate the effect of input noise by minimizing the expected quality loss (EQL). To reduce simulation time in RPD based on bi-fidelity simulations, the autoregressive shifted log loss Gaussian process (ASLLGP) model is proposed to estimate the high-fidelity (HF) EQL using HF and low-fidelity (LF) simulation data. The excellent performance of the proposed model is illustrated with two examples. Descriptions on how to run the codes to reproduce the results for the two examples are presented as follows. 
 
