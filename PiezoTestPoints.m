@@ -21,4 +21,4 @@ parfor i=1:nt
   [qtest(i)]=PiezoTrueEQL(xctest(i,:),x_e,w_noise);
 
 end
-load('400 test points for the piezoelectric actuator example.mat');
+save('400 test points for the piezoelectric actuator example.mat');
