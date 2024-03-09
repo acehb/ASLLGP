@@ -10,25 +10,25 @@ Robust parameter design is a quality improvement method to mitigate the effect o
 
 **Instructions for reproducing the results in Example 1:**
 
-Please open and run the `ShaftCompare3methods.m` script to get the summaries of the five EQL prediction performance measures for the ASLLGP, ALL, and AGPL models that are presented in Table 2 and the paired sample t-statistics in Table 2. The code also gives the results in Table 3.
+Please open and run the `BarCompare3methods.m` script to get the summaries of the five EQL prediction performance measures for the ASLLGP, ALL, and AGPL models that are presented in Table 2 and the paired sample t-statistics in Table 2. The code also gives the results in Table 3, which summaries the EQL prediction performance for three single-fidelity GP models, and Table 4, which summarizes the robust optimization performance of the ASLLGP, ALL, and AGPL models.
 
-Run the `ShaftGridOptimizationEQL.m` script to construct Figure 3, i.e., which is a plot of the posterior mean, and lower and upper 95% credible limits for the EQL given by the ASLLGP, ALL and AGPL models fitted with data from one nested design versus $`x_c`$.
+Run the `BarGridOptimizationEQL.m` script to construct Figure 3, i.e., which is a plot of the posterior mean, and upper and lower 95% credible limits for the EQL given by the ASLLGP, ALL and AGPL models fitted with data from one nested design versus $`x_c`$. The true EQL is also plotted in the figure.
 
 **Instructions for reproducing the results in Example 2:**
 
-Please open and run the `PiezoCompare3methods.m` script to get the summaries of the five EQL prediction performance measures for the ASLLGP, ALL, and AGPL models that are presented in Table 5 and the paired sample t-statistics in Table 5. The code also gives the results in Table 6.
+Please open and run the `PiezoCompare3methods.m` script to get the summaries of the five EQL prediction performance measures for the ASLLGP, ALL, and AGPL models that are presented in Table 6 and the paired sample t-statistics in Table 6. The code also gives the results in Table 7, which summarizes the robust optimization performance of the ASLLGP, ALL, and AGPL models.
 
-Run the `PiezoContourPlotsofEQL.m` script to construct Figure 5, which is a contour plot of the posterior means of the EQL given by the ASLLGP, ALL and AGPL models fitted with data from one nested design versus $`\mathbf{x}_c=(x_1,x_2)`$.
+Run the `PiezoContourPlotsofEQL.m` script to construct Figure 5, which is a contour plot of the posterior means of the EQL given by the ASLLGP, ALL and AGPL models fitted with data from one nested design versus $`\mathbf{x}_c=(x_1,x_2)`$. The true EQL is also plotted in the figure.
 
 **Data Files**
 
 **1.	Example 1**
 
-The `ShaftOutput.mat` file gives the maximum Von Mises stress outputs of the HF and LF simulators (stored in variable stress) and the mass of the small shaft output of both simulators (stored in variable mass) on the $`{11}^2`$ grid $`{\{0,0.1,…,1}\}^2`$ of $`(x_c,x_e)`$ values.
+The `BarOutput.mat` file gives the maximum Von Mises stress outputs of the HF and LF simulators (stored in variable stress) and the mass of the small bar output of both simulators (stored in variable mass) on the $`{11}^2`$ grid $`{\{0,0.1,…,1}\}^2`$ of $`(x_c,x_e)`$ values.
 
-The `Designs for the shaft example.mat` file gives the 100 maximin nested Latin hypercube designs for fitting the ASLLGP, ALL, and AGPL models, the 100 maximin Latin hypercube designs for fitting the single-fidelity GP models, and the corresponding outputs at all design points.
+The `Designs for the bar example.mat` file gives the 100 maximin nested Latin hypercube designs for fitting the ASLLGP, ALL, and AGPL models, the 100 maximin Latin hypercube designs for fitting the single-fidelity GP models, and the corresponding outputs at all design points.
 
-The `200 test points for the shaft example.mat` file  gives the 200 test points for Example 1, and the true EQL at those points.
+The `200 test points for the bar example.mat` file  gives the 200 test points for Example 1, and the true EQL at those points.
 
 **2.	Example 2**
 
@@ -62,7 +62,7 @@ The `Piezo True EQL on grid points.mat` file gives the true EQL at all $`\mathbf
 
 `lgwt.m`:	Please	download	this	file	from [https://ww2.mathworks.cn/matlabcentral/fileexchange/4540-legendre-gauss-quadrature- weights-and-nodes](url), and place it in the same folder as the other scripts.
 
-`lossShaft.m`: Function for computing the loss function  $`L (∙)`$ used in Example 1.
+`lossBar.m`: Function for computing the loss function  $`L (∙)`$ used in Example 1.
 
 `lossPiezo.m`: Function for computing the loss function $`L (∙)`$ used in Example 2.
 
@@ -72,17 +72,16 @@ The `Piezo True EQL on grid points.mat` file gives the true EQL at all $`\mathbf
 
 `PiezoelectricActuator.m`: Function that contains the HF (fidelity=2) and LF (fidelity=1) simulators for Example 2.
 
-`PiezoTestPoints.m`: Script used to generate 400 test points for Example 2 and compute the true EQL at those points (used to generate the points stored in the `400 test points for the piezoelectric actuator example.mat` file).
+`PiezoTestPoints.m`: Script used to generate 400 test points for Example 2 and compute the true EQL at those points (used to generate the data stored in the `400 test points for the piezoelectric actuator example.mat` file).
 
 `PiezoTrueEQL.m`: Function for computing the true EQL for Example 2.
 
 `PiezoTrueEQLonGridPoints.m`: Script used to compute the true EQL at all $`\mathbf{x}_c\in{\{0,0.005,…,1}\}^2`$ for Example 2 (used to compute the data stored in the `Piezo True EQL on grid points.mat` file).
 
-`ShaftDesignpoints.m`: Generates 100 maximin nested Latin hypercube designs, 100 maximin Latin hypercube designs, and the corresponding outputs at all design points for Example 1 (the results from one execution of this script are stored in the `Designs for the shaft example.mat` file, and the data in this .mat file are used to obtain the results presented in Example 1).
+`BarDesignpoints.m`: Generates 100 maximin nested Latin hypercube designs, 100 maximin Latin hypercube designs, and the corresponding outputs at all design points for Example 1 (the results from one execution of this script are stored in the `Designs for the bar example.mat` file, and the data in this .mat file are used to obtain the results presented in Example 1).
 
-`ShaftInterp.m`:  Interpolators for the mass of the small shaft output (which is the same for both HF and LF simulators) and the HF (fidelity=2) and LF (fidelity=1) maximum von Mises stress outputs on the grid $`{\{0,0.1,…,1}\}^2`$ of $`(x_c,x_e)`$ values for Example 1.
+`BarInterp.m`:  Interpolators for the mass of the small bar output (which is the same for both HF and LF simulators) and the HF (fidelity=2) and LF (fidelity=1) maximum von Mises stress outputs on the grid $`{\{0,0.1,…,1}\}^2`$ of $`(x_c,x_e)`$ values for Example 1.
 
-`ShaftTestpoints.m`: Script used to generate the 200 test points for Example 1 and compute the true EQL at those points (used to generate the data stored in the
- `200 test points for the shaft example.mat` file).
+`BarTestpoints.m`: Script used to generate the 200 test points for Example 1 and compute the true EQL at those points (used to generate the data stored in the `200 test points for the bar example.mat` file).
 
-`ShaftTrueEQL.m`: Function for computing the true EQL for Example 1.
+`BarTrueEQL.m`: Function for computing the true EQL for Example 1.
