@@ -33,7 +33,7 @@ tao2l=Res'*irResl/n;
 
 function mle=omle(thetal,G,x)
 % global G x
-n = length(x);
+n = size(x,1);
 rx=correlax(x,x,thetal);
 vec1=[ones(n,1)];
 [irx, ldetrx]=invandlogdet(rx);
