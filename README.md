@@ -60,7 +60,7 @@ The `Piezo True EQL on grid points.mat` file gives the true EQL at all $`\mathbf
   
 `invandlogdet.m`: Function used to compute the inverse and the log determinant of a positive definite matrix.
 
-`lgwt.m`:	Please	download	this	file	from [](https://ww2.mathworks.cn/matlabcentral/fileexchange/4540-legendre-gauss-quadrature- weights-and-nodes), and place it in the same folder as the other scripts.
+`lgwt.m`:	Please	download	this	file	from https://ww2.mathworks.cn/matlabcentral/fileexchange/4540-legendre-gauss-quadrature- weights-and-nodes, and place it in the same folder as the other scripts.
 
 `lossBar.m`: Function for computing the loss function  $`L (∙)`$ used in Example 1.
 
