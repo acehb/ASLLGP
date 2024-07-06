@@ -80,7 +80,7 @@ The `Piezo True EQL on grid points.mat` file gives the true EQL at all $`\mathbf
 
 `BarDesignpoints.m`: Generates 100 maximin nested Latin hypercube designs and 100 maximin Latin hypercube designs, and computes the outputs at all design points for Example 1 (the results from one execution of this script are stored in the `Designs for the bar example.mat` file, and the data in this .mat file are used to obtain the results presented in Example 1).
 
-`BarInterp.m`:  Interpolators for the mass of the small bar output (which is the same for both HF and LF simulators) and the HF (fidelity=2) and LF (fidelity=1) maximum von Mises stress outputs on the grid $`{\{0,0.1,…,1}\}^2`$ of $`(x_c,x_e)`$ values for Example 1.
+`BarInterp.m`:  Interpolators for the mass of the small bar output (which is the same for both HF and LF simulators) on the grid $`{\{0,0.1,…,1}\}`$ of $`x_c`$ values and the HF (fidelity=2) and LF (fidelity=1) maximum von Mises stress outputs on the grid $`{\{0,0.1,…,1}\}^2`$ of $`(x_c,x_e)`$ values for Example 1.
 
 `BarTestpoints.m`: Script used to generate the 200 test points for Example 1 and compute the true EQLs at those points (used to generate the data stored in the `200 test points for the bar example.mat` file).
 
