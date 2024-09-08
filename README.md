@@ -52,7 +52,7 @@ The `Piezo True EQL on grid points.mat` file gives the true EQL at each $`\textb
 
 `gpfit2level.m`: Function used to find the MLEs of the parameters of the GP $`\Delta(∙)`$ in Section 3.1 and also the MLE of $`\rho`$.
 
-`gpfitASLL1level.m`: Function used to find the estimate of the vector of parameters \boldmath${\Theta}_l$ for the proposed model in Section 4.
+`gpfitASLL1level.m`: Function used to find the estimate of the vector of parameters $\boldmath{\Theta}_l$ for the proposed model in Section 4.
 
 `gpfitASLL2level.m`: Function used to find the estimate of the vector of parameters $`\pmb{\Theta}_h`$ for the proposed model in Section 4.
 
