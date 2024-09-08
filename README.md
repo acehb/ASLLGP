@@ -36,7 +36,7 @@ The `Designs for the piezoelectric actuator example.mat` file gives the 100 maxi
 
 The `400 test points for the piezoelectric actuator example.mat` file gives the 400 test points from a Latin hypercube design for Example 2, and the true EQLs at those points.
 
-The `Piezo True EQL on grid points.mat` file gives the true EQL at each $\mathbf{x}_c\in{\{0,0.005,…,1}\}^2$.
+The `Piezo True EQL on grid points.mat` file gives the true EQL at each $`\textbf{x}_c\in{\{0,0.005,…,1}\}^2`$.
 
 **MATLAB scripts other than the four main .m files mentioned in the instructions above**
 
@@ -52,9 +52,9 @@ The `Piezo True EQL on grid points.mat` file gives the true EQL at each $\mathbf
 
 `gpfit2level.m`: Function used to find the MLEs of the parameters of the GP $`\Delta(∙)`$ in Section 3.1 and also the MLE of $`\rho`$.
 
-`gpfitASLL1level.m`: Function used to find the estimate of the vector of parameters $`\bm{\Theta}_l`$ for the proposed model in Section 4.
+`gpfitASLL1level.m`: Function used to find the estimate of the vector of parameters $`\boldsymbol{\Theta}_l`$ for the proposed model in Section 4.
 
-`gpfitASLL2level.m`: Function used to find the estimate of the vector of parameters $`\pmb{\Theta}_h`$ for the proposed model in Section 4.
+`gpfitASLL2level.m`: Function used to find the estimate of the vector of parameters $`\boldsymbol{\Theta}_h`$ for the proposed model in Section 4.
 
 `gppredict.m`: Function used to compute the posterior mean functions and posterior covariance functions of the HF and LF responses for the autoregressive GP model.  
   
