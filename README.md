@@ -4,7 +4,7 @@ This repository contains the MATLAB codes for the paper titled “Robust Paramet
 
 Robust parameter design is a quality improvement method that mitigates the effect of input noise by minimizing the expected quality loss (EQL). To reduce simulation time in RPD based on bi-fidelity simulations, the autoregressive shifted log loss Gaussian process (ASLLGP) model is proposed to estimate the high-fidelity (HF) EQL using HF and low-fidelity (LF) simulation data. The excellent performance of the proposed model is illustrated with two examples. Descriptions on how the codes should be run to reproduce the results for the two examples are given below. 
 
-**Requirements: Matlab R2020a, Global Optimization Toolbox, Parallel Computing Toolbox.**
+**Requirements: MATLAB R2020a, Global Optimization Toolbox, Parallel Computing Toolbox.**
 
 **Note: Please put all MATLAB scripts and data files in this repository in one folder on your computer.**
 
