@@ -12,13 +12,13 @@ Robust parameter design is a quality improvement method that mitigates the effec
 
 Please open and run the `BarCompare3methods.m` script to get the summaries of the five EQL prediction performance measures for the ASLLGP, ALL, and AGPL models that are presented in Table 2 and the paired sample t-statistics in Table 2. The code also gives the results in Table 3, which summarizes the EQL prediction performance for three single-fidelity GP models, and Table 4, which summarizes the robust optimization performance of the ASLLGP, ALL, and AGPL models.
 
-Run the `BarGridOptimizationEQL.m` script to construct Figure 3, i.e., which is a plot of the posterior means, and upper and lower 95% credible interval limits for the EQL given by the ASLLGP, ALL and AGPL models fitted with the data from one nested design versus $x_c$. The true EQL is also plotted in the figure.$`{X}\mathbf{X} = \mathbf{A}\mathbf{B}`$
+Run the `BarGridOptimizationEQL.m` script to construct Figure 3, i.e., which is a plot of the posterior means, and upper and lower 95% credible interval limits for the EQL given by the ASLLGP, ALL and AGPL models fitted with the data from one nested design versus $x_c$. The true EQL is also plotted in the figure.
 
 **Instructions for reproducing the results in Example 2:**
 
 Please open and run the `PiezoCompare3methods.m` script to get the summaries of the five EQL prediction performance measures for the ASLLGP, ALL, and AGPL models that are presented in Table 6 and the paired sample t-statistics in Table 6. The code also gives the results in Table 7, which summarizes the robust optimization performance of the ASLLGP, ALL, and AGPL models.
 
-Run the `PiezoContourPlotsofEQL.m` script to construct Figure 5, which is a contour plot of the posterior means of the EQL given by the ASLLGP, ALL and AGPL models fitted with the data from one nested design versus $\mathbf{x}_c=(x_1,x_2)$. The true EQL is also plotted in the figure.
+Run the `PiezoContourPlotsofEQL.m` script to construct Figure 5, which is a contour plot of the posterior means of the EQL given by the ASLLGP, ALL and AGPL models fitted with the data from one nested design versus $\textbf{x}_c=(x_1,x_2)$. The true EQL is also plotted in the figure.
 
 **Data Files**
 
