@@ -12,7 +12,7 @@ Robust parameter design is a quality improvement method that mitigates the effec
 
 Please open and run the `BarCompare3methods.m` script to get the summaries of the five EQL prediction performance measures for the ASLLGP, ALL, and AGPL models that are presented in Table 2 and the paired sample t-statistics in Table 2. The code also gives the results in Table 3, which summarizes the EQL prediction performance for three single-fidelity GP models, and Table 4, which summarizes the robust optimization performance of the ASLLGP, ALL, and AGPL models.
 
-Run the `BarGridOptimizationEQL.m` script to construct Figure 3, i.e., which is a plot of the posterior means, and upper and lower 95% credible interval limits for the EQL given by the ASLLGP, ALL and AGPL models fitted with the data from one nested design versus $x_c$. The true EQL is also plotted in the figure.$\mathbf{X} = \mathbf{A}\mathbf{B}$
+Run the `BarGridOptimizationEQL.m` script to construct Figure 3, i.e., which is a plot of the posterior means, and upper and lower 95% credible interval limits for the EQL given by the ASLLGP, ALL and AGPL models fitted with the data from one nested design versus $x_c$. The true EQL is also plotted in the figure.$`\mathbf{X} = \mathbf{A}\mathbf{B}`$
 
 **Instructions for reproducing the results in Example 2:**
 
