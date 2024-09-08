@@ -52,9 +52,9 @@ The `Piezo True EQL on grid points.mat` file gives the true EQL at each $`\textb
 
 `gpfit2level.m`: Function used to find the MLEs of the parameters of the GP $`\Delta(∙)`$ in Section 3.1 and also the MLE of $`\rho`$.
 
-`gpfitASLL1level.m`: Function used to find the estimate of the vector of parameters $`\boldsymbol{\uptheta}_l`$ for the proposed model in Section 4.
+`gpfitASLL1level.m`: Function used to find the estimate of the vector of parameters $`\textbf{\Theta}_l`$ for the proposed model in Section 4.
 
-`gpfitASLL2level.m`: Function used to find the estimate of the vector of parameters $`\boldsymbol{\uptheta}_h`$ for the proposed model in Section 4.
+`gpfitASLL2level.m`: Function used to find the estimate of the vector of parameters $`\textbf{\Theta}_h`$ for the proposed model in Section 4.
 
 `gppredict.m`: Function used to compute the posterior mean functions and posterior covariance functions of the HF and LF responses for the autoregressive GP model.  
   
