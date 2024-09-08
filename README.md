@@ -76,7 +76,7 @@ The `Piezo True EQL on grid points.mat` file gives the true EQL at each $`\mathb
 
 `PiezoTrueEQL.m`: Function for computing the true EQL for Example 2.
 
-`PiezoTrueEQLonGridPoints.m`: Script used to compute the true EQL at each $\mathbf{x}_c\in{\{0,0.005,…,1}\}^2$ for Example 2 (used to compute the data stored in the `Piezo True EQL on grid points.mat` file).
+`PiezoTrueEQLonGridPoints.m`: Script used to compute the true EQL at each $`\boldsymbol{x}_c\in{\{0,0.005,…,1}\}^2`$ for Example 2 (used to compute the data stored in the `Piezo True EQL on grid points.mat` file).
 
 `BarDesignpoints.m`: Generates 100 maximin nested Latin hypercube designs and 100 maximin Latin hypercube designs, and computes the outputs at all design points for Example 1 (the results from one execution of this script are stored in the `Designs for the bar example.mat` file, and the data in this .mat file are used to obtain the results presented in Example 1).
 
