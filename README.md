@@ -68,7 +68,7 @@ The `Piezo True EQL on grid points.mat` file gives the true EQL at each $`\mathb
 
 `NestedLHD.m`: Function for generating maximin nested Latin hypercube designs.
 
-`PiezoDesignPoints.m`: Generates 100 maximin nested Latin hypercube designs and computes the outputs at the design points for Example 2 (the results from one execution of this script are stored in the `Designs for the piezoelectric actuator example.mat` file, and the data in this .mat file are used to obtain the results presented in Example 2)
+`PiezoDesignPoints.m`: Generates 100 maximin nested Latin hypercube designs and computes the outputs at the design points for Example 2 (the results from one execution of this script are stored in the `Designs for the piezoelectric actuator example.mat` file, and the data in this .mat file are used to obtain the results presented in Example 2).
 
 `PiezoelectricActuator.m`: Function that contains the HF (fidelity=2) and LF (fidelity=1) simulators for Example 2.
 
