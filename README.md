@@ -18,7 +18,7 @@ Run the `BarGridOptimizationEQL.m` script to construct Figure 3, i.e., which is 
 
 Please open and run the `PiezoCompare3methods.m` script to get the summaries of the five EQL prediction performance measures for the ASLLGP, ALL, and AGPL models that are presented in Table 6 and the paired sample t-statistics in Table 6. The code also gives the results in Table 7, which summarizes the robust optimization performance of the ASLLGP, ALL, and AGPL models.
 
-Run the `PiezoContourPlotsofEQL.m` script to construct Figure 5, which is a contour plot of the posterior means of the EQL given by the ASLLGP, ALL and AGPL models fitted with the data from one nested design versus $\pmb{x}_c=(x_1,x_2)$. The true EQL is also plotted in the figure.
+Run the `PiezoContourPlotsofEQL.m` script to construct Figure 5, which is a contour plot of the posterior means of the EQL given by the ASLLGP, ALL and AGPL models fitted with the data from one nested design versus $\mathbf{x}_c=(x_1,x_2)$. The true EQL is also plotted in the figure.
 
 **Data Files**
 
