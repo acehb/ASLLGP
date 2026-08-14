@@ -34,14 +34,13 @@ c33 = [D_const_strain(1,1) D_const_strain(2,1) D_const_strain(2,2)];
 ctop = [c11(:); c12(:); c22(:); -c13(:); -c23(:); -c33(:)];
 cbot = [c11(:); c12(:); c22(:); c13(:); c23(:); -c33(:)];
 f = [0 0 0]';
-specifyCoefficients(model, 'm', 0,'d', 0,'c', ctop, 'a', 0, 'f', f,'Face',2);
-specifyCoefficients(model, 'm', 0,'d', 0,'c', cbot, 'a', 0, 'f', f,'Face',1);
+
 if(fidelity==1) %LF
     hmax = min([L H2])/2;
-    generateMesh(model,'Hmax',hmax,'GeometricOrder','linear','MesherVersion','R2013a');    
+    generateMesh(model,'Hmax',hmax,'GeometricOrder','linear');    
 elseif(fidelity==2) %HF
     hmax = min([L H2])/2.5; 
-    generateMesh(model,'Hmax',hmax,'GeometricOrder','quadratic','MesherVersion','R2013a');    
+    generateMesh(model,'Hmax',hmax,'GeometricOrder','quadratic');    
 end
 
 % Boundary Condition Definition
@@ -56,10 +55,25 @@ for i=1:model.Geometry.NumEdges
         leftedges=[leftedges;i];
     end
 end
-if((length(topedge)~=1)||(length(bottomedge)~=1)||(length(leftedges)~=2))
+NF=model.Geometry.NumFaces;
+nodesindices2=cell(1,NF);
+for i=1:NF
+nodesindices2{i} = findNodes(model.Mesh,'region','Face',i);
+if(all(model.Mesh.Nodes(2,nodesindices2{i})<(10^-6)))
+    Fbot=i;
+elseif(all(model.Mesh.Nodes(2,nodesindices2{i})>(-10^-6)))
+    Ftop=i;
+end
+end
+
+if((length(topedge)~=1)||(length(bottomedge)~=1)||(length(leftedges)~=2)||(length(Fbot)~=1)||(length(Ftop)~=1))
     disp('error')
     return
 end
+
+specifyCoefficients(model, 'm', 0,'d', 0,'c', ctop, 'a', 0, 'f', f,'Face',Ftop);
+specifyCoefficients(model, 'm', 0,'d', 0,'c', cbot, 'a', 0, 'f', f,'Face',Fbot);
+
 voltTop = applyBoundaryCondition(model,'mixed','Edge',topedge,'u',V,'EquationIndex',3);
 voltBot = applyBoundaryCondition(model,'mixed','Edge',bottomedge,'u',0,'EquationIndex',3);
 clampLeft = applyBoundaryCondition(model,'mixed','Edge',leftedges,'u',[0 0],'EquationIndex',1:2);

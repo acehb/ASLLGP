@@ -1,11 +1,11 @@
-clear
+clear all;
 load('Designs for the bar example.mat');
-Nx_e=10;[x_e,w_noise]=lgwt(Nx_e,0,1);
+Nx_e=15;[x_e,w_noise]=lgwt(Nx_e,0,1);
 % Gauss-Legendre quadrature nodes and weights
-w=zeros(1,Nx_e);
+w=zeros(1,Nx_e);fx2=zeros(1,Nx_e);
 for i=1:Nx_e
-    fx2=1;
-    w(i)=w_noise(i)*fx2;
+    fx2(i)=betapdf(x_e(i),4,2);
+    w(i)=w_noise(i)*fx2(i);
 end
 nx=1001;x_c=linspace(0,1,nx)';
 % compute the true EQL at the grid {0,0.001,¡­,1}.
@@ -15,7 +15,7 @@ parfor i=1:nx
 end
 
 % choose one design
-choose_d=7
+choose_d=348
 xl=reshape(xlall(choose_d,:),d,[])';
 yls=yls_all(:,choose_d);yhs=yhs_all(:,choose_d);ym=ym_all(:,choose_d);
 x=xl(1:m,:);
@@ -87,20 +87,24 @@ x_c31=x_c(choosep);transq31=transq(choosep);
 x_cb=x_c(chooseb);translossUCL_ALL31=translossUCL_ALL(chooseb);translossLCL_ALL31=translossLCL_ALL(chooseb);transEQLALL31=transEQLALL(choosep);
 transEQLAGPL31=transEQLAGPL(choosep);translossLCL_AGPL31=translossLCL_AGPL(chooseb);translossUCL_AGPL31=translossUCL_AGPL(chooseb);
 transEQLASLL31=transEQLASLL(choosep);translossLCL_ASLL31=translossLCL_ASLL(chooseb);translossUCL_ASLL31=translossUCL_ASLL(chooseb);
-ylbgpl=-0.15;yubgpl=0.23;ftick5=25;ygpl=[-0.15:0.05:0.2];
-ylbll=0;yubll=0.23;yll=[0:0.04:0.2];ms=20;lw=4;fx5=0.04;
+ylbgpl=-0.15;yubgpl=0.2;ftick5=25;ygpl=[-0.1:0.05:0.2];
+ylbll=0;yubll=0.35;yll=[0:0.07:0.35];ms=20;lw=4;fx5=0.04;
 wx=0.28;wy=0.88;wdx=0.05;fy=0.085;ft=21;
 
 figure(5)
 subplot(1,3,2);subplot('position',[fx5+wdx+wx*1 fy,wx,wy]);
 plot(x_c31,transq31,'-.r','LineWidth',lw);hold on;plot(x_c31,transEQLALL31,'-','Color',[.8,.3,0],'LineWidth',lw);
-hold on;plot(x_cb,translossLCL_ALL31,'k:','LineWidth',lw,'MarkerSize',ms);hold on;f1=plot(x_cb,translossUCL_ALL31,'k:','LineWidth',lw,'MarkerSize',ms);set(f1,'handlevisibility','off');
-hold off;title('(b)','FontSize',ft,'FontWeight','bold');
+hold on;plot(x_cb,translossLCL_ALL31,'k:','LineWidth',lw,'MarkerSize',ms);hold on;f1=plot(x_cb,translossUCL_ALL31,'k:','LineWidth',lw,'MarkerSize',ms);
+ set(f1,'handlevisibility','off');hold off;title('(b)','FontSize',ft,'FontWeight','bold');
 leg2=legend('True EQL',[' ',sprintf('\n'),'Posterior mean of the EQL ',sprintf('\n'),'given by the ALL model'],[ ' ',sprintf('\n'),'Upper/lower 95% credible',sprintf('\n'),'interval limit for the EQL',sprintf('\n'),'given by the ALL model']);
 xlabel('Control factor x_c','FontSize',ft,'FontWeight','bold');
 xlim([0.3,1]);xticks([0.3:0.1:1]);a2 = get(gca,'XTickLabel');set(gca,'XTickLabel',a2,'fontsize',ftick5,'fontweight','bold')
 ylabel('EQL','FontSize',ft,'FontWeight','bold');
-ylim([ylbll,yubll]);set(gca,'yTick',[yll]);set(gca,'YTickLabel',{'0','10','20','32','45','58'});
+% ylim([ylbll,yubll]);set(gca,'yTick',[yll]);set(gca,'YTickLabel',{'0','10','20','32','45','58'});
+niceEQL_ab = [0 20 40 60 90 120];              
+[yTick_ab, yLabel_ab] = niceLogTicks(niceEQL_ab);
+ylim([yTick_ab(1), yTick_ab(end)]);
+set(gca,'yTick',yTick_ab,'YTickLabel',yLabel_ab);
 set(gca,'fontsize',ft,'fontweight','bold');
 subplot(1,3,3);subplot('position',[fx5+wdx*2+wx*2, fy,wx,wy]);
 plot(x_c31,transq31,'-.r','LineWidth',lw);hold on;plot(x_c31,transEQLAGPL31,'-','Color',[0 0.4 0],'LineWidth',lw);
@@ -110,7 +114,11 @@ legend('True EQL',[' ',sprintf('\n'),'Posterior mean of the EQL ',sprintf('\n'),
 xlabel('Control factor x_c','FontSize',ft,'FontWeight','bold');
 xlim([0.3,1]);xticks([0.3:0.1:1]);a3 = get(gca,'XTickLabel');set(gca,'XTickLabel',a3,'fontsize',ftick5,'fontweight','bold')
 ylabel('EQL','FontSize',ft,'FontWeight','bold');
-ylim([ylbgpl,yubgpl]);set(gca,'yTick',[ygpl]);set(gca,'YTickLabel',{'-41','-26','-12','0','12','26','41','58'});
+% ylim([ylbgpl,yubgpl]);set(gca,'yTick',[ygpl]);set(gca,'YTickLabel',{'-41','-26','-12','0','12','26','41','58'});
+niceEQL_c = [-25 -10 0 10 25 40 60];         
+[yTick_c, yLabel_c] = niceLogTicks(niceEQL_c);
+ylim([yTick_c(1), yTick_c(end)]);
+set(gca,'yTick',yTick_c,'YTickLabel',yLabel_c);
 set(gca,'fontsize',ft,'fontweight','bold');
 subplot(1,3,1);subplot('position',[fx5 fy,wx,wy]);
 plot(x_c31,transq31,'-.r','LineWidth',lw);hold on;plot(x_c31,transEQLASLL31,'b-','LineWidth',lw);hold on;
@@ -120,11 +128,17 @@ legend('True EQL',[' ',sprintf('\n'),'Posterior mean of the EQL',sprintf('\n'),'
 xlabel('Control factor x_c','FontSize',ft,'FontWeight','bold');
 xlim([0.3,1]);xticks([0.3:0.1:1]);a1 = get(gca,'XTickLabel');set(gca,'XTickLabel',a1,'fontsize',ftick5,'fontweight','bold')
 ylabel('EQL','FontSize',ft,'FontWeight','bold');
-ylim([ylbll,yubll]);set(gca,'yTick',[yll]);set(gca,'YTickLabel',{'0','10','20','32','45','58'});
+ylim([ylbll,yubll]);set(gca,'yTick',yTick_ab,'YTickLabel',yLabel_ab);
 set(gca,'fontsize',ft,'fontweight','bold');
 
 function logx=logscale(x)
 % modified log scale to the y-axis
-C=2;
-logx = sign(x).*(log10(1+abs(x)./(10^C)));
+% C=2;
+logx = sign(x).*(log10(1+abs(x)./(10^2)));
+end
+function [ticks, labels] = niceLogTicks(Values)
+% niceValues: true EQL
+% ticks: transformed values£¬labels £ºstring
+ticks = logscale(Values);
+    labels = arrayfun(@(v) num2str(v), Values, 'UniformOutput', false);
 end

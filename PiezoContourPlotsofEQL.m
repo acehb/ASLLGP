@@ -4,7 +4,7 @@ load('Piezo True EQL on grid points.mat');
 [indextrue1,indextrue2]=find(qgrid==min(min(qgrid)));xcmin=[xc1(indextrue1,indextrue2),xc2(indextrue1,indextrue2)];
 
 % choose one design
-choose_d=86
+choose_d=29      
 xl=reshape(xlall(choose_d,:),d,[])';
 yld=yld_all(:,choose_d);yhd=yhd_all(:,choose_d);ym=ym_all(:,choose_d);
 x=xl(1:m,:);
@@ -57,10 +57,11 @@ end
 [indexALL1,indexALL2]=find(expectedlossALL==min(min(expectedlossALL)));xcminALL=[xc1(indexALL1,indexALL2),xc2(indexALL1,indexALL2)];
 
 tEQL=min(min(qgrid))
-minEQL=[min(min(expectedlossASLL)),min(min(expectedlossALL)),min(min(expectedlossAGPL))]
+minEQL=[qgrid(indexASLL1,indexASLL2),qgrid(indexALL1,indexALL2),qgrid(indexAGPL1,indexAGPL2)]
 %% Figure 5: contour plot of the posterior mean, and lower and upper 95% credible limits for the EQL given by the ASLLGP, ALL and AGPL models versus x_c=(x_1,x_2).
-range1=[1,2,4,6,8];rangeGPL=[0,1,2,4,6,8];
-labs=21;lw=4;ls2=699;ls1=260;ls3=260;%ls3=240;%ls3=250;
+     range1=[1,2,4,6,8];rangeGPL=[0,1,2,4,6,8];
+% range1=[0.5,2,4,6,8];rangeGPL=[0,1,2,4,6,8];
+labs=21;lw=4;ls2=700;ls1=250;ls3=260;ls4=260;%ls3=240;%ls3=250;
 wx=0.28;wy=0.88;wdx=0.05;fy=0.085;fx=0.05;fleg=20;ftick=21;ft=21;
 figure(4)
 subplot(1,3,1);subplot('position',[fx,fy,wx-0.01,wy]);
@@ -98,6 +99,6 @@ leg3=legend([h5 h6],['True',sprintf('\n'),'EQL{\times}10^{5}'],[' ',sprintf('\n'
 set(leg3,'FontSize',fleg,'FontWeight','bold');title('(c)','FontSize',ft,'FontWeight','normal');
 clabel(cagpl1,hagpl1,'FontSize',labs,'FontWeight','normal');clabel(cagpl2,hagpl2,'FontSize',labs,'FontWeight','normal');hagpl1.LineWidth = lw;hagpl2.LineWidth = lw;
 xlabel('Control factor x_1','FontSize',labs,'FontWeight','normal');ylabel('Control factor x_2','FontSize',labs,'FontWeight','normal');
-hagpl1.LabelSpacing=ls1;hagpl2.LabelSpacing=ls2;
+hagpl1.LabelSpacing=ls4;hagpl2.LabelSpacing=ls2;
 xlim([0,1]);xticks([0:0.2:1]);ca3 = get(gca,'XTickLabel');set(gca,'XTickLabel',ca3,'fontsize',ftick,'fontweight','normal');
 yticks([0:0.2:1]);cay3= get(gca,'YTickLabel');set(gca,'YTickLabel',cay3,'fontsize',ftick,'fontweight','normal');

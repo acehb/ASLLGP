@@ -9,6 +9,5 @@ for k=1:Nx_e
     [ystemp(k),ymtemp(k)]=BarInterp(stress,mass,[x_c,x_e(k)],2);
     [losstemp(k),losstemps(k),losstempm(k)]=lossBar(ystemp(k),ymtemp(k));
 end
-loss_1=w*losstemps;
-q=loss_1+losstempm(1);
+loss_1=w*losstemps;q=loss_1+losstempm(1);
 end

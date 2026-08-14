@@ -1,6 +1,6 @@
 function [theta,fval,rou,beta,tao2,irRes,irx,transpar]=gpfitASLL2level(xin,hlin,yin,ubound)
 %Inputs xin:the design used in the high-fidelity experiment;yin:outputs data from the high-fidelity experiment;
-%hl: the data transformed from the first m outputs data from the low-fidelity experiment using the the shifted log transform with the estimates of a_l and epsilon_l;ubound:upper bound of the loss function(omit for unbounded loss function).
+%hlin: the data transformed from the first m outputs data from the low-fidelity experiment using the the shifted log transform with the estimates of a_l and epsilon_l;ubound:upper bound of the loss function(omit for unbounded loss function).
 %Outputs theta:maximum likelihood estimate of correlation parameters;fval:-2*(log likelihood)-m;rou:maximum likelihood estimate of rho_s;beta:maximum likelihood estimate of the regression coefficients;%tao2:maximum likelihood estimate of variance parameter;
 %irRes,irx are the vector and matrix to be used by gppredict to compute point predictions and prediction intervals %transpar: maximum likelihood estimate of a and epsilon;
 format long g
@@ -9,60 +9,62 @@ format long g
 G=yin;
 x=xin;
 hl=hlin;
-maxg=max(G);d=size(x,2);lb=0.01;ub=25;lbe=0;ube=10*maxg;
-options=optimoptions(@patternsearch,'MaxIter',10^6,'Display','off');
+maxg=max(G);d=size(x,2);lb=0.01;ub=15;%ub=25;
+lbe=0;ube=10*maxg;
+options=optimoptions(@patternsearch,'MaxIter',10^6,'Display','off','MaxFunctionEvaluations', 10^6);
+epfactor=(ube-lbe)/(ub-lb);
 
 if(nargin==3)
-nstart=100;nc_start=5000*(d+1);%
-p = sobolset(d+1,'Skip',1e3,'Leap',1e2);X0 = net(p,nc_start);
-    can_start=[lb+(ub-lb)*X0(:,1:d),ube*X0(:,d+1)]; 
+    nstart=100;nc_start=5000*(d+1);%
+    p = sobolset(d+1,'Skip',1e3,'Leap',1e2);X0 = net(p,nc_start);
+    can_start=[lb+(ub-lb)*X0];
     candi=zeros(nc_start,1);
     Sign=1;
-for j=1:nc_start
-    [candi(j)]=omile(can_start(j,:),G, x, d, Sign, hl);
-end
-[tempc,inds]=sort(candi,'ascend');
+    for j=1:nc_start
+        [candi(j)]=omile(can_start(j,:),G, x, d, Sign, epfactor, lbe, lb, hl);
+    end
+    [tempc,inds]=sort(candi,'ascend');
     par=zeros(nstart,d+1); fvaln=zeros(nstart,1);
-%     Sign=1;
     parfor i=1:nstart
-        [par(i,:), fvaln(i)]=patternsearch(@(par)omile(par,G, x, d, Sign, hl),can_start(inds(i),:),[],[],[],[],[lb*ones(1,d) lbe],[ub*ones(1,d) ube],[],options);
+        [par(i,:), fvaln(i)]=patternsearch(@(par)omile(par,G, x, d, Sign, epfactor, lbe, lb, hl),can_start(inds(i),:),[],[],[],[],[lb*ones(1,d+1) ],[ub*ones(1,d+1) ],[],options);
     end
     [fval, index]=min(fvaln);
     paropt=par(index,:);
     theta=paropt(1:d);
-    transpar=[paropt((d+1)) 1];
-    
+    transpar=[(paropt(d+1)-lb)*epfactor+lbe 1];
+
 else
+    lbe2=ubound;ube2=10*ubound;epfactor2=(ube2-lbe2)/(ub-lb);
     nstart=200;nc_start=2*5000*(d+1);%
-p = sobolset(d+1,'Skip',1e3,'Leap',1e2);X0 = net(p,nc_start/2);
-    can_start=[lb+(ub-lb)*X0(:,1:d),ube*X0(:,d+1);lb+(ub-lb)*X0(:,1:d),ubound+9*ubound*X0(:,d+1)]; 
+    p = sobolset(d+1,'Skip',1e3,'Leap',1e2);X0 = net(p,nc_start/2);
+    can_start=[lb+(ub-lb)*X0;lb+(ub-lb)*X0];
     candi=zeros(nc_start,1);
-for j=1:nc_start/2
-    [candi(j)]=omile(can_start(j,:),G, x, d, 1, hl);
-end
-for j=nc_start/2+1:nc_start
-    [candi(j)]=omile(can_start(j,:),G, x, d, -1, hl);
-end
-[tempc0,inds0]=sort(candi(1:nc_start/2),'ascend');
-[tempc1,inds1]=sort(candi(nc_start/2+1:nc_start),'ascend');
+    for j=1:nc_start/2
+        [candi(j)]=omile(can_start(j,:),G, x, d, 1, epfactor, lbe, lb, hl);
+    end
+    for j=nc_start/2+1:nc_start
+        [candi(j)]=omile(can_start(j,:),G, x, d, -1, epfactor2, lbe2, lb, hl);
+    end
+    [tempc0,inds0]=sort(candi(1:nc_start/2),'ascend');
+    [tempc1,inds1]=sort(candi(nc_start/2+1:nc_start),'ascend');
     par=zeros(nstart,d+1); fvaln=zeros(nstart,1);
     parfor i=1:nstart
         if(i<=nstart/2)
             Sign=1;
-            [par(i,:), fvaln(i)]=patternsearch(@(par)omile(par,G, x, d, Sign, hl),can_start(inds0(i),:),[],[],[],[],[lb*ones(1,d) 0],[ub*ones(1,d) ube],[],options);
+            [par(i,:), fvaln(i)]=patternsearch(@(par)omile(par,G, x, d, Sign, epfactor, lbe, lb, hl),can_start(inds0(i),:),[],[],[],[],[lb*ones(1,d+1)],[ub*ones(1,d+1)],[],options);
         else
             Sign=-1;
-            [par(i,:), fvaln(i)]=patternsearch(@(par)omile(par,G, x, d, Sign, hl),can_start(inds1(i-nc_start/2)+nc_start/2,:),[],[],[],[],[lb*ones(1,d) ubound],[ub*ones(1,d) 10*ubound],[],options);
+            [par(i,:), fvaln(i)]=patternsearch(@(par)omile(par,G, x, d, Sign, epfactor2, lbe2, lb, hl),can_start(inds1(i-nstart/2)+nc_start/2,:),[],[],[],[],[lb*ones(1,d+1)],[ub*ones(1,d+1)],[],options);
         end
-        
+
     end
     [fval, index]=min(fvaln);
     paropt=par(index,:);
     theta=paropt(1:d);
     if(index<=nstart/2)
-        transpar=[paropt((d+1)) 1];
+        transpar=[(paropt(d+1)-lb)*epfactor+lbe 1];
     else
-        transpar=[paropt((d+1)) -1];
+        transpar=[(paropt(d+1)-lb)*epfactor2+lbe2 -1];
     end
 end
 m = size(x,1);
@@ -71,6 +73,8 @@ vec1=[ones(m,1)];
 irx=invandlogdet(rx);
 H=[hl,vec1];
 irH=irx*H;ivHirH=invandlogdet(H'*irH);
+% cond((H'*irH))
+% rank(H)
 S=log(transpar(2)*(G)+transpar(1));
 gamma=ivHirH*(irH'*S);
 Res=S-H*gamma;
@@ -80,13 +84,11 @@ rou=gamma(1);
 beta=gamma(2:pt);
 tao2=Res'*irRes/m;
 
-function mle=omile(par,G, x, d, Sign, hl)
-% global G x d Sign hl
+function mle=omile(par,G, x, d, Sign, epfac, lbeps, lb, hl)
 theta=par(1:d);
-epsilon=par((d+1));
+epsilon=(par((d+1))-lb)*epfac+lbeps;
 m = size(x,1);
 rx=correlax(x,x,theta);
-% rx=correlax(x,x,theta)+1e-6*eye(n);
 vec1=[ones(m,1)];
 [irx, ldetrx]=invandlogdet(rx);
 H=[hl,vec1];

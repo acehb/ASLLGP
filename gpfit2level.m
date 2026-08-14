@@ -2,15 +2,14 @@ function [theta,fval,rou,beta,tao2,irRes,irx]=gpfit2level(xin,hlin,yin)
 %Inputs xin:the design used in the high-fidelity experiment;yin:outputs data from the high-fidelity experiment;hlin:the first m outputs data from the low-fidelity experiment;
 %Outputs theta:maximum likelihood estimate of correlation parameters;fval:-2*(log likelihood);rou:maximum likelihood estimate of rho;beta:maximum likelihood estimate of the regression coefficients;tao2:maximum likelihood estimate of variance parameter;irRes,irx are the vector and matrix to be used by gppredict to compute point predictions and prediction intervals
 format long g
-% global G x hl
-
 G=yin;
 x=xin;
 hl=hlin;
 d=size(x,2);
-nstart=100;nc_start=5000*d;% 
-p = sobolset(d,'Skip',1e3,'Leap',1e2);X0 = net(p,nc_start);lb=0.01;ub=25;
-options=optimoptions(@patternsearch,'MaxIter',10^6,'Display','off');
+nstart=100;nc_start=5000*d;%
+p = sobolset(d,'Skip',1e3,'Leap',1e2);X0 = net(p,nc_start);
+lb=0.01;ub=15;
+options=optimoptions(@patternsearch,'MaxIter',10^6,'Display','off','MaxFunctionEvaluations', 10^6);
 can_start=lb+(ub-lb)*X0;candi=zeros(nc_start,1);
 for j=1:nc_start
     [candi(j)]=omle(can_start(j,:),G,x,hl);
@@ -33,11 +32,9 @@ Res=G-H*gamma;p=length(gamma);
 irRes=irx*Res;
 rou=gamma(1);
 beta=gamma(2:p);
-% tao2=Res'*irRes/(n-p);
 tao2=Res'*irRes/m;
 
 function mle=omle(theta,G,x,hl)
-% global G x hl
 m =  size(x,1);
 rx=correlax(x,x,theta);
 H=[hl,ones(m,1)];
@@ -47,5 +44,4 @@ gamma=ivHirH*(irH'*G);
 Res=G-H*gamma;p=length(gamma);
 irRes=irx*Res;
 tao2=Res'*irRes/m;
-% tao2=Res'*irRes/(n-p);mle=ldetrx+(n-p)*log(max(tao2,0))+ldetHirH;
 mle=ldetrx+m*log(max(tao2,0));

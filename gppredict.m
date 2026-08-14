@@ -8,8 +8,10 @@ vec1_test=[ones(ntest,1)];
 rl= correlax(xl,x_test,thetal);
 mul=vec1_test*betal+rl'*irResl;
 
-varl=max(tao2l*(correlax(x_test,x_test,thetal)-rl'*irxl*rl),0);
-
+varl=tao2l*(correlax(x_test,x_test,thetal)-rl'*irxl*rl);
+[EigVecl,EigVall] = eig((varl+varl')/2);
+EigVall = diag(max(diag(EigVall), 0));   
+varl = EigVecl*EigVall*EigVecl';
 if(nargin==7)
     mu=mul;var=varl;
     return
@@ -18,6 +20,9 @@ else
 r= correlax(x,x_test,theta);
 mu=h_test*gamma+r'*irRes;
 
-var=max(rou^2*varl+tao2*(correlax(x_test,x_test,theta)-r'*irx*r),0);
+var=rou^2*varl+tao2*(correlax(x_test,x_test,theta)-r'*irx*r);
+[EigVec,EigVal] = eig((var+var')/2);
+EigVal = diag(max(diag(EigVal), 0));   
+var = EigVec*EigVal*EigVec';
 end
 end

@@ -6,9 +6,10 @@ format long g
 G=yin;
 x=xin;
 d=size(x,2);
-nstart=100;nc_start=5000*d;% 
-p = sobolset(d,'Skip',1e3,'Leap',1e2);X0 = net(p,nc_start);lb=0.01;ub=25;
-options=optimoptions(@patternsearch,'MaxIter',10^6,'Display','off');
+nstart=100;nc_start=5000*d;%
+p = sobolset(d,'Skip',1e3,'Leap',1e2);X0 = net(p,nc_start);
+lb=0.01;ub=15;
+options=optimoptions(@patternsearch,'MaxIter',10^6,'Display','off','MaxFunctionEvaluations', 10^6);
 can_start=lb+(ub-lb)*X0;candi=zeros(nc_start,1);
 for j=1:nc_start
     [candi(j)]=omle(can_start(j,:),G,x);
@@ -16,7 +17,7 @@ end
 [tempc,inds]=sort(candi,'ascend');
 par=zeros(nstart,d); fvaln=zeros(nstart,1);
 parfor i=1:nstart
-   [par(i,:), fvaln(i)]=patternsearch(@(thetal)omle(thetal,G,x),can_start(inds(i),:),[],[],[],[],lb*ones(1,d) ,ub*ones(1,d),[],options);
+    [par(i,:), fvaln(i)]=patternsearch(@(thetal)omle(thetal,G,x),can_start(inds(i),:),[],[],[],[],lb*ones(1,d) ,ub*ones(1,d),[],options);
 end
 [fvall, index]=min(fvaln);
 thetal=par(index,:);
@@ -42,6 +43,5 @@ irvec1=irx*vec1;
 betal=ivirvec1*(irvec1'*G);
 Res=G-vec1*betal;
 tao2l=Res'*(irx*Res)/n;
-% tao2l=Res'*(irx*Res)/(n-1);mle=ldetrx+(n-1)*log(max(tao2l,0))+ldet1r1;
 mle=ldetrx+n*log(max(tao2l,0));
 
