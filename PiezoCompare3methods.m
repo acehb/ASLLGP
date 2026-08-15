@@ -309,7 +309,7 @@ STDEQLonefi=std(minEQLonefi)./sqrt(ndesign)
 disp('Two sample t-statistics for the true EQL at the estimated optimal control-factor setting given by shifted log loss GP, lognormal loss, and GP for loss models');
 tEQLonefi=[s0onefi.tstat,s1onefi.tstat,s2onefi.tstat]
 
-disp('Table S3.4');
+disp('Table S3.1');
 disp('Sample means for MARE given by shifted log loss GP, lognormal loss, and GP for loss models');
 mMAREonefi=mean(MAREonefi)*100
 disp('Standard errors for MARE given by shifted log loss GP, lognormal loss, and GP for loss models');
