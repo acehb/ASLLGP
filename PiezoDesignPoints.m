@@ -1,4 +1,4 @@
-%Generates 500 designs and outputs at the design points for Example 2 
+%Generates 500 designs and outputs at the design points for Example 2 and 3
 clear all;
 m=16;n=32;d=4;
 rng(5);
