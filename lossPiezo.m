@@ -1,5 +1,5 @@
 function [L,L_d,L_m]=lossPiezo(yd,ym,b)
-%Inputs yd:tip deflection of the beam;ym: mass of the beam;%b:upper bound of the loss function(omit for unbounded loss function).
+%Inputs yd:tip deflection of the beam;ym: mass of the beam;%b:scaling parameter of the bounded loss(omit for unbounded loss function).
 %Outputs L:total quality cost; L_d:quality cost incurred by the tip deflection;L_m:quality cost incurred by the mass of the beam.
 tm=7.25e-5;td=-7.8e-5;
 k_1=3300;k_2=1;
