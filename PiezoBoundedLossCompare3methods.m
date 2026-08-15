@@ -138,7 +138,7 @@ disp('Minimum true EQL');
 minqBounded=min(min(qgridBounded))
 disp('Mean of true EQL');
 expqBounded=trapz(trapz(qgridBounded))*(0.005^2)
-disp('Table S3.1');
+disp('Table S3.2');
 disp('Sample means for MARE given by ASLLGP, ALL, AGPL models');
 mMAREBounded=mean(MAREBounded)*100
 disp('Standard errors for MARE given by ASLLGP, ALL, AGPL models');
@@ -283,7 +283,7 @@ minGPLEQLBounded_MILE(k)=qgridBounded(indexGPL1Bounded_MILE,indexGPL2Bounded_MIL
 minLLEQLBounded_MILE(k)=qgridBounded(indexLL1Bounded_MILE,indexLL2Bounded_MILE);xcminLLBounded_MILEind(k,:)=[indexLL1Bounded_MILE,indexLL2Bounded_MILE];
 end
 
-disp('Table S3.2');
+disp('Table S3.3');
 disp('Sample means for MARE given by shifted log loss GP, lognormal loss, and GP for loss models');
 mMAREBoundedMILE=mean(MAREBoundedMILE)*100
 disp('Standard errors for MARE given by shifted log loss GP, lognormal loss, and GP for loss models');
@@ -319,7 +319,7 @@ stderrcoverBounded_MILE=std(coverBoundedMILE)./sqrt(ndesign)
 disp('Two sample t-statistics for EC-95 given by shifted log loss GP, lognormal loss, and GP for loss models');
 [~,~,~,stats31BoundedMILE]=ttest2(coverBoundedMILE(:,1),coverBounded(:,1),'Vartype','unequal');[~,~,~,stats32BoundedMILE]=ttest2(coverBoundedMILE(:,2),coverBounded(:,1),'Vartype','unequal');[~,~,~,stats33BoundedMILE]=ttest2(coverBoundedMILE(:,3),coverBounded(:,1),'Vartype','unequal');
 tcoverdifffiBoundedMILE=[stats31BoundedMILE.tstat,stats32BoundedMILE.tstat,stats33BoundedMILE.tstat]
-disp('Table S3.3');
+disp('Table S3.4');
 disp('Sample means for the true EQL at the estimated optimal control-factor setting given by ASLLGP, ALL, AGPL models');
 minEQLBounded=[minASLLEQLBounded,minALLEQLBounded,minAGPLEQLBounded];
 MEQLBounded=mean(minEQLBounded)
