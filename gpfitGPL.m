@@ -1,6 +1,6 @@
 function [theta,fval,beta,tao,irRes,irx,RIf,ifRIf]=gpfitGPL(xin,yin)
 %Inputs xin:the design used in the experiment;yin:outputs data from the experiment
-%Outputs theta:maximum integrated likelihood estimate of correlation parameters;fval:-2*(log integrated likelihood);beta:maximum likelihood estimate of the regression coefficients;%tao:maximum integrated likelihood estimate of variance parameter;irRes,irx,RIf,ifRIf are several vectors and matrices to be used by gppredict to compute point predictions and prediction intervals%loomrlengthci,loocoverage,loo95rae,loo95rlengthci:performance measures basesd on leave-one-out cross-validation 
+%Outputs theta:maximum integrated likelihood estimate of correlation parameters;fval:-2*(log integrated likelihood);beta:maximum likelihood estimate of the regression coefficients;%tao:maximum integrated likelihood estimate of variance parameter;irRes,irx,RIf,ifRIf are several vectors and matrices to be used by gppredict to compute point predictions and prediction intervals 
 format long g
 %global z x lx
 
